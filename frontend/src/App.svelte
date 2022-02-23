@@ -18,6 +18,7 @@
 
 	})
 
+	// Fetching the weather card PNG from the Flask API
 	async function fetchWeather() {
 		// input validation
 		const cityName = city.replace(/\s+/g, ' ').trim()	// removes extras spaces from the string -> https://futurestud.io/tutorials/remove-extra-spaces-from-a-string-in-javascript-or-node-js
@@ -32,7 +33,7 @@
 		cityLast = cityName
 		
 		// fetching the data
-		const res = await fetch(`http://localhost:5000/wttr/${cityName}`)
+		const res = await fetch(`/wttr/${cityName}`)
 		const photo  = await res.blob()
 		weather_card = URL.createObjectURL(photo)
 
@@ -53,7 +54,7 @@
 	<img src={weather_card} alt="weather card shanghai" class="weather-card">
 	<p>{weather_card}</p>
 
-	<SearchBar bind:city={city} onClick={fetchWeather}/>
+	<SearchBar bind:city={city} onSubmit={fetchWeather}/>
 	
 
 </main>
