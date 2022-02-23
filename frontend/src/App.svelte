@@ -4,7 +4,8 @@
 	import SearchBar from './components/SearchBar.svelte'
 
 	let weather_card
-	let city
+	let city = ''
+	let cityLast = ''
 
 	onMount(async () => {
 		console.log('>>> ON MOUNT')
@@ -18,7 +19,20 @@
 	})
 
 	async function fetchWeather() {
-		const res = await fetch(`http://localhost:5000/wttr/${city}`)
+		// input validation
+		const cityName = city.replace(/\s+/g, ' ').trim()	// removes extras spaces from the string -> https://futurestud.io/tutorials/remove-extra-spaces-from-a-string-in-javascript-or-node-js
+
+		// check if the input is empty or is the same as the last one
+		if (cityName == '' || cityName == cityLast) {
+			console.error('Invalid city!')
+			return
+		}
+
+		// remembers the last fetched city to avoid duplicate API calls
+		cityLast = cityName
+		
+		// fetching the data
+		const res = await fetch(`http://localhost:5000/wttr/${cityName}`)
 		const photo  = await res.blob()
 		weather_card = URL.createObjectURL(photo)
 
@@ -28,8 +42,11 @@
 
 <!-- HTML -->
 <main>
-	<img src="Cloudy.svg" alt="cloud :)" class="cloud">
-	<h1>Weather Report</h1>
+	<header>
+		<img src="Cloudy.svg" alt="cloud :)" class="cloud">
+		<h1>Weather Report</h1>
+	</header>
+	
 	<p>This is a web UI for my <a href="https://sam.freelancepolice.org/discord_bots/david_lynch">David Lynch Weather Report</a> discord bot.</p>
 
 	<br>
