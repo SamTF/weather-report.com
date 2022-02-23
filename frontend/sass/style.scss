@@ -40,7 +40,14 @@ p {
 .cloud {
     background-color: #7fc5ff;
     padding: 1rem;
-    width: 100px;
+    width: 90px;
+}
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
 }
 
 
@@ -54,5 +61,9 @@ p {
 @media (max-width: 900px) {
     .weather-card {
         width: 100%;
+    }
+    .cloud {
+        align-self: center;
+        margin: auto;
     }
 }
