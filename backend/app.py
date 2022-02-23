@@ -4,6 +4,8 @@ import requests                                 # for API requests
 import json                                     # To parse and send JSON objects to and from the svelte front-end
 from datetime import datetime                   # getting current local time and checking for nighttime
 
+import weather_report                 # my script to fetch weather conditions and generate the weather cards
+from flask import send_file
 
 ### INITIALISING APP #########
 app = Flask(__name__)
@@ -19,6 +21,12 @@ def base():
 def home(path):
     return send_from_directory('../frontend/public', path)
 
+
+@app.route('/wttr/<city>')
+def wttr(city):
+    weather_card = weather_report.weather_report(city)
+    weather_card.seek(0)
+    return send_file(weather_card, mimetype='image/png')# as_attachment=True, attachment_filename='weather_card.png')
 
 ### RUNNING THE WEBSITE #########
 if __name__ == '__main__':   
