@@ -9,7 +9,7 @@
 </script>
 
 <!-- HTML -->
-<select name="today or tomorrow" id="period"
+<select name="today or tomorrow" id="period" class="dropdown"
     bind:value={selected} on:change="{() => console.log(selected)}">
         {#each options as option}
             <option value={option}>{option.text}</option>
