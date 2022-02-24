@@ -96,16 +96,10 @@ def weather_report(city:str):
     response = requests.get(WEATHERAPI.format(city))
     data = response.json()
 
+    # checking if the response was successful
     if not response.ok:
         raise ValueError(f'400 - City {city} was not found')
 
-    print(data)
-    print(data)
-    print(response)
-    print(response)
-    print(response)
-    print(response)
-    print(response)
 
     # Reading and formatting current values from the dictionary
     current_data = data['current']
@@ -139,6 +133,10 @@ def tomorrow(city:str, transparent:bool):
     # Getting weather data from weatherapi.com
     response = requests.get(WEATHERAPI.format(city))
     data = response.json()
+
+    # checking if the response was successful
+    if not response.ok:
+        raise ValueError(f'400 - City {city} was not found')
 
     # Reading and formatting current values from the dictionary
     forecast = data['forecast']['forecastday'][1]
