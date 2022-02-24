@@ -1,0 +1,44 @@
+// This is a customisable button with the general design of a clickable Button component
+
+// padding-y: vertical padding in rem
+// padding-x: horizontal padding in rem
+// outline-offset: outline offset in px
+// click-animation: whether to animate when clicked (bool)
+@mixin button($padding-y, $padding-x, $outline-offset, $click-animation) {
+    // Box design
+    background-color: #7fc5ff;
+    border: none;
+    border-radius: 10px;
+
+    // Text
+    color: white;
+    font-weight: 700;
+
+    // Size
+    padding: $padding-y $padding-x;
+
+    // Cursor
+    cursor: pointer;
+
+    // Animation
+    transition: all 100ms;
+
+    // Mouse over
+    &:hover {
+        outline: 3px dashed #7fc5ff;
+        outline-offset: $outline-offset;
+        // padding: ($padding-y * 0.75) ($padding-x * 1.25);
+    }
+
+    // Clicking: expand and brighten when clicked (if animation is enabled)
+    @if $click-animation {
+        &:active {
+            background-color: hsl(207, 100%, 50%);
+            outline-offset: $outline-offset * 3;
+            padding: ($padding-y * 0.5) ($padding-x * 1.5);
+    
+            transition: all 0ms;
+        }
+    }
+    
+}

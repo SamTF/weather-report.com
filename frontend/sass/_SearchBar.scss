@@ -1,9 +1,5 @@
 // The input box where user can enter a city name, and the button to submit it
 
-// Button vars
-$padding-y: 1rem;        // vertical padding
-$padding-x: 5rem;        // horizontal padding
-$outline-offset: 4px;   // distance between outline and border
 
 .search-bar {
     display: grid;
@@ -28,38 +24,11 @@ $outline-offset: 4px;   // distance between outline and border
     }
 
     button {
-        // Box design
-        background-color: #7fc5ff;
-        border: none;
-        border-radius: 10px;
-
-        // Text
-        color: white;
-        font-weight: 700;
-
-        // Size
-        padding: $padding-y $padding-x;
-
-        // Cursor
-        cursor: pointer;
-
-        // Animation
-        transition: all 100ms;
-
-        // Mouse over
-        &:hover {
-            outline: 3px dashed #7fc5ff;
-            outline-offset: $outline-offset;
-            // padding: ($padding-y * 0.75) ($padding-x * 1.25);
-        }
-
-        // Clicking
-        &:active {
-            background-color: hsl(207, 100%, 50%);
-            outline-offset: $outline-offset * 3;
-            padding: ($padding-y * 0.5) ($padding-x * 1.5);
-
-            transition: all 0ms;
-        }
+        @include button(
+        $padding-y: 1rem, 
+        $padding-x: 5rem,
+        $outline-offset: 4px,
+        $click-animation: true
+    );
     }
 }

@@ -1,0 +1,13 @@
+// The dropdown menu to select today or tomorrow's weather
+
+// CSS stuff here: https://www.sliderrevolution.com/resources/css-select-styles/
+
+
+.dropdown {
+    @include button(
+        $padding-y: 0.75rem, 
+        $padding-x: 2.5rem,
+        $outline-offset: 4px,
+        $click-animation: false
+    );
+}
