@@ -96,6 +96,17 @@ def weather_report(city:str):
     response = requests.get(WEATHERAPI.format(city))
     data = response.json()
 
+    if not response.ok:
+        raise ValueError(f'400 - City {city} was not found')
+
+    print(data)
+    print(data)
+    print(response)
+    print(response)
+    print(response)
+    print(response)
+    print(response)
+
     # Reading and formatting current values from the dictionary
     current_data = data['current']
     current_temp = get_temp(current_data)

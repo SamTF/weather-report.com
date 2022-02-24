@@ -23,9 +23,10 @@
 		// input validation
 		const cityName = city.replace(/\s+/g, ' ').trim()	// removes extras spaces from the string -> https://futurestud.io/tutorials/remove-extra-spaces-from-a-string-in-javascript-or-node-js
 
-		// check if the input is empty or is the same as the last one
-		if (cityName == '' || cityName == cityLast) {
-			console.error('Invalid city!')
+		// check if the input is empty or is the same as the last one or contains any special character/numbers
+		if (cityName == '' || cityName == cityLast || !/^[A-Za-z\s]*$/.test(cityName)) {
+			console.error('City name cannot be repeated, empty, nor contain special characters')
+			alert('City name cannot be repeated, empty, nor contain special characters!')
 			return
 		}
 
@@ -34,10 +35,20 @@
 		
 		// fetching the data
 		const res = await fetch(`/wttr/${cityName}`)
+
+		// checking if the response is OK
+		if (!res.ok) {
+			console.error('City not found!')
+			weather_card = 'XP.svg'
+			return
+		}
+
+		// reading the data
 		const photo  = await res.blob()
 		weather_card = URL.createObjectURL(photo)
 
-		console.log(weather_card)
+		// resetting the input
+		city = ''
 	}
 </script>
 
