@@ -5,6 +5,24 @@
 @import 'Dropdown';
 
 
+// Light / Dark mode -> https://codepen.io/KaioRocha/pen/MdvWmg
+html {
+    --bgColour: transparent;
+    --fontColour: black;
+}
+html[dark-theme='true'] {
+    --bgColour: #101010;
+    --fontColour: white;
+}
+
+// Change background colour based on data-theme variable
+html {
+    background-color: var(--bgColour);
+    color: var(--fontColour) !important;
+}
+
+
+// Main container for all the element in App.svelte
 main {
     display: grid;
     place-items: center;
@@ -32,6 +50,8 @@ p {
     font-weight: 400;
 
     max-width: 90%;
+
+    color: var(--fontColour) !important;
 }
 
 
