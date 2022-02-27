@@ -37,7 +37,7 @@ def wttr(city: str):
 # BACKEND :: Fetch tomorrow's weather forecast and average condition
 @app.route('/tmrw/<city>')
 def tomorrow(city: str):
-    transparent = request.args.get('transparent', None)   # whether the card should be solid white or transparent (aka light vs dark mode)
+    transparent = request.args.get('transparent', default=False, type=lambda v: v.lower() == 'true')   # whether the card should be solid white or transparent (aka light vs dark mode)
 
     # Get the weather card as a PNG BytesIO object
     try:
