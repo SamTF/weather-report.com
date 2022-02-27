@@ -4,7 +4,7 @@
 // padding-x: horizontal padding in rem
 // outline-offset: outline offset in px
 // click-animation: whether to animate when clicked (bool)
-@mixin button($padding-y, $padding-x, $outline-offset, $click-animation) {
+@mixin button($padding-y, $padding-x, $outline-offset, $click-animation, $invert-colours: false) {
     // Box design
     background-color: #7fc5ff;
     border: none;
@@ -13,6 +13,7 @@
     // Text
     color: white;
     font-weight: 700;
+    font-family: $body-font;
 
     // Size
     padding: $padding-y $padding-x;
@@ -39,6 +40,12 @@
     
             transition: all 0ms;
         }
+    }
+
+    // Inverting colours - solid outline, transparent fill
+    @if $invert-colours {
+        background-color: transparent;
+        border: 4px solid #7fc5ff;
     }
     
 }

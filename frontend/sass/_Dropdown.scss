@@ -4,10 +4,24 @@
 
 
 .dropdown {
+    width: 100%;
+
+    // Text
+    font-family: $body-font;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #777 !important;
+
     @include button(
         $padding-y: 0.75rem, 
         $padding-x: 2.5rem,
         $outline-offset: 4px,
-        $click-animation: false
+        $click-animation: false,
+        $invert-colours: true
     );
+
+    // option {
+    //     background-color: #7fc5ff;
+    //     font-family: $body-font;
+    // }
 }
