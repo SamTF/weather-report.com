@@ -8,10 +8,10 @@
 // Light / Dark mode -> https://codepen.io/KaioRocha/pen/MdvWmg
 html {
     --bgColour: transparent;
-    --fontColour: black;
+    --fontColour: #27202d;
 }
 html[dark-theme='true'] {
-    --bgColour: #101010;
+    --bgColour: #27202d;
     --fontColour: white;
 }
 

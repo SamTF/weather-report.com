@@ -10,7 +10,8 @@
     font-family: $body-font;
     font-size: 1.5rem;
     text-align: center;
-    color: #777 !important;
+    // color: #27202d !important;
+    color: var(--fontColour) !important;
 
     @include button(
         $padding-y: 0.75rem, 
@@ -20,8 +21,9 @@
         $invert-colours: true
     );
 
-    // option {
-    //     background-color: #7fc5ff;
-    //     font-family: $body-font;
-    // }
+    option {
+        background-color: var(--accent-colour, $accent-colour);
+        // color: var(--accent-colour, $accent-colour);
+        font-family: $body-font;
+    }
 }

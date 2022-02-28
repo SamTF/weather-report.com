@@ -1,12 +1,14 @@
 // This is a customisable button with the general design of a clickable Button component
 
+$accent-colour: #7fc5ff;
+
 // padding-y: vertical padding in rem
 // padding-x: horizontal padding in rem
 // outline-offset: outline offset in px
 // click-animation: whether to animate when clicked (bool)
 @mixin button($padding-y, $padding-x, $outline-offset, $click-animation, $invert-colours: false) {
     // Box design
-    background-color: #7fc5ff;
+    background-color: var(--accent-colour, $accent-colour);
     border: none;
     border-radius: 10px;
 
@@ -26,7 +28,7 @@
 
     // Mouse over
     &:hover {
-        outline: 3px dashed #7fc5ff;
+        outline: 3px dashed var(--accent-colour, $accent-colour);
         outline-offset: $outline-offset;
         // padding: ($padding-y * 0.75) ($padding-x * 1.25);
     }
@@ -45,7 +47,7 @@
     // Inverting colours - solid outline, transparent fill
     @if $invert-colours {
         background-color: transparent;
-        border: 4px solid #7fc5ff;
+        border: 4px solid var(--accent-colour, $accent-colour);
     }
     
 }
