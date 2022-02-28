@@ -3,12 +3,38 @@
 	import { onMount } from "svelte"
 	import SearchBar from './components/SearchBar.svelte'
 	import Dropdown from './components/Dropdown.svelte'
+	import FastAverageColor from 'fast-average-color'
 
 	let weather_card = ''		// URL for the weather card image to display
 	let city = ''				// name of the city requested by the user
 	let prevCity = {wttr: '', tmrw: ''} // stores the previous cities requested for current weather and tomorrow's weather
 	let command					// weather to get current conditions or tomorrow's forecast
 	let forecastType = ''		// the text value of the LAST command requested
+
+	// Dynamic CSS Accent Colour
+	let accentColour = '#7fc5ff'
+	$: cssVars = `--accent-colour: ${accentColour}`
+
+	const fac = new FastAverageColor();
+
+	async function getAccent(url) {
+		fac.getColorAsync(url, {
+			algorithm: 'dominant',
+			ignoredColor: [
+				[255, 255, 255, 255], // white
+				[0, 0, 0, 255], // black
+				[0, 0, 0, 0], // transparent
+			]
+		})
+		.then(color => {
+			console.log(color)
+			accentColour = color.hex
+		})
+		.catch(e => {
+			console.error(e)
+		})
+	}
+	
 
 	// Loading weather card for random location on start up
 	onMount(async () => {
@@ -27,7 +53,7 @@
 
 		// check if the input is empty or is the same as the last one or contains any special character/numbers
 		if (cityName == '' ||
-			cityName.toLowerCase() == prevCity[command.value] ||
+			// cityName.toLowerCase() == prevCity[command.value] ||
 			!/^[A-Za-z\s]*$/.test(cityName)) {
 				console.error('City name cannot be repeated, empty, nor contain special characters')
 				alert('City name cannot be repeated, empty, nor contain special characters!')
@@ -51,6 +77,7 @@
 		// reading the data
 		const photo  = await res.blob()
 		weather_card = URL.createObjectURL(photo)
+		await getAccent(weather_card)
 
 		// resetting the input
 		city = ''
@@ -68,7 +95,7 @@
 </script>
 
 <!-- HTML -->
-<main>
+<main style={cssVars}>
 	<header>
 		<img src="Cloudy.svg" alt="cloud :)" class="cloud">
 		<h1>Weather Report</h1>
