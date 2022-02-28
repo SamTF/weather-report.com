@@ -47,7 +47,7 @@ def tomorrow(city: str):
 
     # Returning a 404 Error if the given city resulted in error
     except ValueError:
-        return send_file(weather_card, mimetype='image/png')
+        abort(404)
 
 
 ### RUNNING THE WEBSITE #########
