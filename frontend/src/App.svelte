@@ -3,6 +3,7 @@
 	import { onMount } from "svelte"
 	import SearchBar from './components/SearchBar.svelte'
 	import Dropdown from './components/Dropdown.svelte'
+	import ThemeToggle from './components/ThemeToggle.svelte'
 	import FastAverageColor from 'fast-average-color'
 
 	let weather_card = ''		// URL for the weather card image to display
@@ -10,6 +11,7 @@
 	let prevCity = {wttr: '', tmrw: ''} // stores the previous cities requested for current weather and tomorrow's weather
 	let command					// weather to get current conditions or tomorrow's forecast
 	let forecastType = ''		// the text value of the LAST command requested
+	let darkTheme = false		// Toggle Light/Dark theme
 
 	// Dynamic CSS Accent Colour
 	let accentColour = '#7fc5ff'
@@ -39,7 +41,7 @@
 	// Loading weather card for random location on start up
 	onMount(async () => {
 		console.log('>>> ON MOUNT')
-		const res = await fetch('http://localhost:5000/wttr/shanghai')
+		const res = await fetch('/wttr/shanghai')
 		const card_blob  = await res.blob()
 		weather_card = URL.createObjectURL(card_blob)
 
@@ -85,13 +87,6 @@
 		// setting the appropriate title
 		forecastType = command.text
 	}
-
-	// Toggle Light/Dark theme
-	let darkTheme = false
-	const toggleTheme = () => {
-		darkTheme = !darkTheme
-		document.documentElement.setAttribute('dark-theme', darkTheme)
-	}
 </script>
 
 <!-- HTML -->
@@ -108,9 +103,8 @@
 	
 	<br>
 	<img src={weather_card} alt="weather card shanghai" class="weather-card">
-	<p>{weather_card}</p>
 
 	<SearchBar bind:city={city} onSubmit={fetchWeather}/>
 
-	<button on:click={toggleTheme}>set dark theme</button>
+	<ThemeToggle bind:darkTheme={darkTheme} />
 </main>
