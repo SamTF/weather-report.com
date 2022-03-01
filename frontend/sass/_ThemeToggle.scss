@@ -1,0 +1,47 @@
+// This is the button that toggles between Light and Dark theme
+
+.theme-toggle {
+    // top right fixed position
+    position: fixed;
+    top: 2rem;
+    right: 4rem;
+
+    button {
+        // cursor
+        cursor: pointer;
+
+        // removing default styles
+        background-color: transparent;
+        border: none;
+
+        &:active {
+            background-color: transparent;
+            border: none;
+        }
+    }
+
+    // setting image size
+    img {
+        height: 64px;
+    }
+}
+
+@media (max-width: 900px) {
+    .theme-toggle {
+        // repositioning
+        top: 1rem;
+        right: 1rem;
+
+        // background colour
+        button {
+            background-color: var(--bgColour);
+            border-radius: 100%;
+            padding: 16px;
+        }
+        
+        // making the icon smaller
+        img {
+            height: 32px;
+        }
+    }
+}
