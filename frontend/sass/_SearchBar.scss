@@ -2,15 +2,20 @@
 
 
 .search-bar {
+    // grid display
     display: grid;
     place-items: center;
     gap: 1rem;
     
+    // size
     width: 80%;
+
+    // margin
+    margin-top: 1rem;
 
     // Text
     font-family: $body-font;
-    font-size: 1.5rem;
+    font-size: $h2-size;
 
     input {
         // Box design
@@ -25,10 +30,10 @@
 
     button {
         @include button(
-        $padding-y: 1rem, 
-        $padding-x: 5rem,
-        $outline-offset: 4px,
-        $click-animation: true
-    );
+            $padding-y: 1rem, 
+            $padding-x: 5rem,
+            $outline-offset: 4px,
+            $click-animation: true
+        );
     }
 }

@@ -6,5 +6,18 @@
 $font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 $h1-font: "Oswald", $font-family;
 $body-font: "Raleway", $font-family;
-$normal-size: 1rem;
-$mobile-size: 0.7rem;
+
+// Font Sizes
+$h1-size: 4rem;
+$h2-size: 1.5rem;
+$body-size: 1rem;
+
+html {
+    font-size: 16px;
+}
+
+@media (max-width: 900px) {
+    html {
+        font-size: 12px;
+    }    
+}
