@@ -5,6 +5,7 @@
 	import Dropdown from './components/Dropdown.svelte'
 	import ThemeToggle from './components/ThemeToggle.svelte'
 	import FastAverageColor from 'fast-average-color'
+	import getUserCity from './location'
 
 	let weather_card = ''		// URL for the weather card image to display
 	let city = ''				// name of the city requested by the user
@@ -41,7 +42,11 @@
 	// Loading weather card for random location on start up
 	onMount(async () => {
 		console.log('>>> ON MOUNT')
-		const res = await fetch('/wttr/shanghai')
+
+		const userCity = await getUserCity()
+		console.log(userCity)
+
+		const res = await fetch('/wttr/' + userCity)
 		const card_blob  = await res.blob()
 		weather_card = URL.createObjectURL(card_blob)
 
@@ -102,7 +107,7 @@
 	<Dropdown bind:selected={command} />
 	
 	<br>
-	<img src={weather_card} alt="weather card shanghai" class="weather-card">
+	<img src={weather_card} alt="weather card {city}" class="weather-card">
 
 	<SearchBar bind:city={city} onSubmit={fetchWeather}/>
 
