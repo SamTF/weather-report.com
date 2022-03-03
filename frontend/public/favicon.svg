@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px"
+	 height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+<g id="BG">
+	<rect fill-rule="evenodd" clip-rule="evenodd" fill="#65AEC5" width="16" height="16"/>
+</g>
+<g id="Cloud">
+	<g id="body">
+		<polygon fill-rule="evenodd" clip-rule="evenodd" fill="#F8FEFF" points="3.368,11.431 4.581,11.527 6.792,11.306 8.992,11.354 
+			11.823,11.417 12.955,11.156 13.795,10.542 14.389,9.143 14.193,7.702 12.982,6.471 12.08,6.216 11.204,6.348 11.033,5.926 
+			10.393,5.067 9.663,4.67 8.672,4.476 7.335,4.805 6.469,5.964 5.737,5.617 4.859,5.653 4.204,6.024 3.717,6.602 3.481,7.24 
+			3.457,7.627 3.023,7.714 2.638,7.849 1.91,8.446 1.644,9.101 1.628,9.705 1.784,10.251 2.119,10.752 		"/>
+	</g>
+	<g id="cloud_outline">
+		<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#CFE5E8" stroke-width="0.2663" stroke-linecap="round" d="
+			M5.811,8.721C5.775,8.32,5.437,7.973,5.087,7.802C4.609,7.569,3.864,7.554,3.349,7.644C2.816,7.736,2.306,7.921,1.966,8.368
+			C1.458,9.037,1.508,10.02,2.038,10.66c1.212,1.466,3.73,0.634,5.338,0.612c1.71-0.023,3.508,0.459,5.195,0.017
+			c1.843-0.483,2.344-2.638,1.229-4.105c-1.184-1.559-3.233-1.111-4.096,0.475c-0.089,0.164-0.17,0.333-0.25,0.501"/>
+		<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#CFE5E8" stroke-width="0.2663" stroke-linecap="round" d="
+			M3.457,7.627C3.412,6.781,4.018,5.973,4.788,5.678C5.511,5.4,6.571,5.704,6.847,6.511"/>
+		<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#CFE5E8" stroke-width="0.2663" stroke-linecap="round" d="
+			M6.469,5.964c0.111-0.294,0.29-0.56,0.487-0.813c1.036-1.329,4.063-0.58,4.151,1.173"/>
+	</g>
+	<g id="face">
+		<path fill-rule="evenodd" clip-rule="evenodd" fill="#CFE5E8" d="M10.548,8.362c-0.414,0.052-0.619,0.753-0.104,0.942
+			c0.516,0.188,0.858-0.388,0.591-0.72c-0.146-0.181-0.362-0.256-0.601-0.128"/>
+		<path fill-rule="evenodd" clip-rule="evenodd" fill="#CFE5E8" d="M8.599,8.517c-0.39,0.09-0.62,0.69-0.119,0.875
+			c0.5,0.184,0.834-0.377,0.575-0.7c-0.143-0.176-0.354-0.25-0.584-0.125"/>
+		<path fill-rule="evenodd" clip-rule="evenodd" fill="none" stroke="#CFE5E8" stroke-width="0.2663" stroke-linecap="round" d="
+			M7.08,9.85c1.347,0.241,2.874,0.384,4.287,0.267c0.354-0.029,0.755-0.089,1.052-0.267"/>
+	</g>
+</g>
+</svg>
