@@ -43,7 +43,16 @@
 	onMount(async () => {
 		console.log('>>> ON MOUNT')
 
-		const userCity = await getUserCity()
+		let userCity = null
+
+		try {
+			userCity = await getUserCity()
+			console.log(userCity)
+		} catch (error) {
+			console.error(error)
+			userCity = 'Los Angeles'
+		}
+		
 		console.log(userCity)
 
 		const res = await fetch('/wttr/' + userCity)
@@ -94,7 +103,6 @@
 	}
 </script>
 
-<!-- HTML -->
 <main style={cssVars}>
 	<header>
 		<img src="Cloudy.svg" alt="cloud :)" class="cloud">
