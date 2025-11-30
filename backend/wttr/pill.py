@@ -132,7 +132,7 @@ def create_weather_card_simplified(city:str, temperature:str, time:str, weather_
 ### Constants
 import os
 
-TEMPLATE        = './wttr/templates/hourly.png'                         # path to the image template
+TEMPLATE        = './wttr/templates/template_current.png'               # path to the image template
 TEMPLATE_IMG    = Image.open(TEMPLATE)                                  # opens the template and stores it in memory
 
 MARKER          = './wttr/templates/marker.png'                         # path to the daily progress marker
@@ -205,15 +205,15 @@ tomorrow_icons_pos_y = 264                                              # y-posi
 tomorrow_condition_pos = (540, 50)                                      # position of the average condition icon
 
 ### Light Mode Constants
-FORECAST        = './wttr/templates/forecast_light.png'                        # path to the image template
+FORECAST        = './wttr/templates/template_tomorrow.png'              # path to the image template
 FORECAST_IMG    = Image.open(FORECAST)                                  # opens the template and stores it in memory
 
 ### Dark Mode Constants
-DARK_FORECAST       = './wttr/templates/forecast_trans.png'                                        # path to the image template
-DARK_FORECAST_IMG   = Image.open(DARK_FORECAST).convert('RGBA')                             # opens the template and stores it in memory
-DARK_TXT_COLOUR     = "#DFDEDC"                                                             # font colour for city name and date
-dark_colours_hex    = ['#A5C3C8', '#65ADC4', '#FCC017', '#E19525', '#863C3D', '#AC97BE']    # icon colours
-DARK_FRCST_COLOURS  = [ImageColor.getcolor(x, 'RGB') for x in dark_colours_hex]             # colours converted to RGB
+DARK_FORECAST       = './wttr/templates/template_tomorrow_dark_alt.png'
+DARK_FORECAST_IMG   = Image.open(DARK_FORECAST).convert('RGBA')
+DARK_TXT_COLOUR     = "#DFDEDC"
+dark_colours_hex    = ['#A5C3C8', '#65ADC4', '#FCC017', '#E19525', '#863C3D', '#AC97BE']
+DARK_FRCST_COLOURS  = [ImageColor.getcolor(x, 'RGB') for x in dark_colours_hex]
 
 ### Dictionary of function arguments for each mode
 LIGHT_MODE_VARS = {
