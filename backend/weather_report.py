@@ -16,7 +16,7 @@ load_dotenv()
 
 API_KEY = os.getenv("WEATHERAPI_KEY")
 WEATHERAPI  = 'http://api.weatherapi.com/v1/forecast.json?key={}&q={}&days=3'
-HOURS = [9, 12, 15, 18, 21, 23] # we only want 9AM, 12PM, 3PM, 6PM, 9PM, and 12AM
+HOURS = [9, 12, 15, 18, 21, 23]
 
 ###### HELPERS #################################################
 def get_code_from_json(forecast) -> str:
@@ -75,54 +75,54 @@ def fetch_api_data(city:str) -> Dict:
     
     return response.json()
 
-def get_weather_report(city:str) -> WeatherReport:
+def get_weather_report_data(city: str) -> WeatherReport:
+    """Fetch weather data and return a Pydantic WeatherReport model"""
     data = fetch_api_data(city)
     current_weather = WeatherCurrent.from_dict(data['current'])
     loc = Location.from_dict(data['location'])
     
     forecasts = [ForecastDay.from_dict(fd) for fd in data['forecast']['forecastday']]
 
-    return WeatherReport(current_weather, loc, forecasts)
+    return WeatherReport(current=current_weather, location=loc, forecast=forecasts)
+
 
 ###### WEATHER FUNCTIONS #################################################
 
 ### 2.0 version with hourly forecasts
 def weather_report(city:str):
-    wr = get_weather_report(city)
+    wr = get_weather_report_data(city)
     local_datetime = get_local_time(wr.location.time)
     
     # Checking if it's nighttime
     if not wr.current.is_day:
         current_code = '999'
     
-    forecasts: List[HourlyForecast] = wr.forecasts[0].hourly_forecasts
+    forecasts: List[HourlyForecast] = wr.forecast[0].hour
 
-    hours = [9, 12, 15, 18, 21, 23]
-    hourly_temps = [forecasts[i].temp for i in hours]
-    hourly_codes = [str(forecasts[i].condition.code) for i in hours]
+    hourly_temps = [forecasts[i].temp for i in HOURS]
+    hourly_codes = [str(forecasts[i].condition.code) for i in HOURS]
     hourly_codes[-1] = '999'
     progress = get_daily_progress(local_datetime)
 
     # FINALLY creates the image and saves it to memory!
     weather_card = pill.create_weather_card_hourly(city.upper(), wr.current.temp, current_code, wr.location.time, hourly_temps, hourly_codes, progress)
-
     return weather_card
 
 
 ###############################
 def tomorrow(city:str, transparent:bool):
-    wr = get_weather_report(city)
-    tomorrow_forecast = wr.forecasts[1]
+    wr = get_weather_report_data(city)
+    tomorrow_forecast = wr.forecast[1]
 
-    avg_temp = round(tomorrow_forecast.day_summary.avgtemp_c)
+    avg_temp = round(tomorrow_forecast.day.avgtemp_c)
     avg_temp = f'{avg_temp}º'
-    condition_code = tomorrow_forecast.day_summary.condition.code
+    condition_code = tomorrow_forecast.day.condition.code
     
     date = tomorrow_forecast.date
     date_formatted = get_formatted_date(date)
 
-    hourly_temps = [(tomorrow_forecast.hourly_forecasts[x]).temp for x in HOURS]
-    hourly_codes = [tomorrow_forecast.hourly_forecasts[x].condition.code for x in HOURS]
+    hourly_temps = [(tomorrow_forecast.hour[x]).temp for x in HOURS]
+    hourly_codes = [tomorrow_forecast.hour[x].condition.code for x in HOURS]
 
     weather_card = pill.create_tomorrow_forecast(city.upper(), avg_temp, condition_code, date_formatted, hourly_temps, hourly_codes, transparent)
     return weather_card
